@@ -2,7 +2,7 @@
 
 Monitor your EC2 server (or any Linux server) using Prometheus and Grafana, all deployed via Docker Compose.
 
-![Github Actions (1)](https://github.com/user-attachments/assets/a7ec4b90-c9cf-4009-9fa7-b128a67aa52a)
+![Github Actions (2)](https://github.com/user-attachments/assets/21f778a9-2216-4537-9792-2f873584aa8e)
 
 ---
 
