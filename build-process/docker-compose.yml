@@ -1,0 +1,46 @@
+version: '3.5'
+services:  
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ../monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - prometheus_data:/prometheus  # Persist Prometheus data  
+    ports:
+      - "9090:9090"
+    networks:
+      - elastic
+    restart: always
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    volumes:
+      - grafana_data:/var/lib/grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=4fsd#dad2e  # Set a secure password
+    ports:
+      - "3000:3000" 
+    networks:
+      - elastic
+    restart: always
+
+  node-exporter:
+    image: prom/node-exporter:latest
+    container_name: node-exporter
+    ports:
+      - "9100:9100"
+    networks:
+      - elastic
+    restart: always
+   
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+networks:
+  elastic:
+    driver: bridge
+
